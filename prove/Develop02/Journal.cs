@@ -8,8 +8,13 @@ public class Journal
             return _fileContents;
         }
 
+
+        public string _fileName;
+        public string _entry;
+        public string _prompt;
+        public List<string> _textContent = new List<string>();
         public void SaveToFile()
         {
-            
+            File.WriteAllLines($"{_fileName}.txt", _textContent);
         }
     }
