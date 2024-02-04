@@ -1,11 +1,14 @@
 public class Journal
     {
-        public string LoadFromFile()
+        public string _loadName;
+        public void LoadFromFile()
         {
-            Console.WriteLine("What is the name of the file you would like to load?");
-            string filename = Console.ReadLine();
-            string _fileContents = File.ReadAllText($"{filename}");
-            return _fileContents;
+            string[] fileContents = File.ReadAllLines(_loadName);
+            foreach (string line in fileContents)
+            {
+                Console.WriteLine(line);
+            }
+
         }
 
 
