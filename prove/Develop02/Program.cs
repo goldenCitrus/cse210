@@ -101,10 +101,6 @@ class Program
             {
                 Console.WriteLine($"{i + 1}. {toBeLoaded[i]}");
             }
-            for (int i = 0; i < numbers.Count(); i++)
-            {
-                
-            }
             string loadSlot = Console.ReadLine();
             string[] numbersArray = numbers.ToArray();
             if (Array.IndexOf(numbersArray, loadSlot) < 0)
@@ -119,7 +115,7 @@ class Program
                 };
                 Console.WriteLine("-------------------------------");
                 loadFile.LoadFromFile();
-                Console.WriteLine("-------------------------------\npress any key to return to the main menu");
+                Console.WriteLine("-------------------------------\npress enter to return to the main menu");
                 Console.ReadLine();
                 isLoading = false;
             }
