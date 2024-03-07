@@ -52,11 +52,13 @@ public class SmartTV : SmartDevice
             _isOn = false;
             _howLong = stopwatch.ElapsedMilliseconds;
             _channel = channels[0];
+            Console.WriteLine($"{_name} off");
         } 
         else 
         {
             _isOn = true;
             stopwatch.Start();
+            Console.WriteLine($"{_name} off");
         }
     }
 
