@@ -7,7 +7,7 @@ class Program
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
-        // GoalsHandler goalsHandler = new GoalsHandler();
+        GoalsHandler goalsHandler = new GoalsHandler();
         // goalsHandler.PrintRoster();
 
         List<string> menuOptions = new List<string>() {"View Or Edit Goals", "Create New Goal", "Quit", "1", "2", "3"};
@@ -27,11 +27,14 @@ class Program
 
             if (titleCaseInput == "1" || titleCaseInput == "View Or Edit Goals")
             {
-                GoalsHandler goalsHandler = new GoalsHandler();
+                // GoalsHandler goalsHandler = new GoalsHandler();
                 if (File.Exists(goalsHandler.fileName))
                 {
-                    goalsHandler.PrintGoals(goalsHandler.Goals);
-                    Console.WriteLine("Which Goal would you like to update?");
+                    goalsHandler.printGoals();
+                    Console.ReadKey();
+                    Console.Clear();
+                    titleCaseInput = "null";
+                    // Console.WriteLine("Which Goal would you like to update?");
                 }
                 else
                 {
@@ -51,15 +54,17 @@ class Program
                     string chosenGoal = Console.ReadLine();
                     if (chosenGoal == "1" || chosenGoal.ToLower() == "simple goal")
                     {
-                        GoalsHandler goalsHandler = new GoalsHandler();
-                        // SimpleGoal simpleGoal = new SimpleGoal();
-                        goalsHandler.Goals.Add(new SimpleGoal("plewase"));
-                        // simpleGoal.CreateGoal(goalsHandler);
-                        // Console.WriteLine(simpleGoal._name + " " + simpleGoal._isComplete);
-                        // Console.WriteLine(goalsHandler.Goals[0]);
-                        string jsonString = JsonSerializer.Serialize(goalsHandler.Goals);
-                        File.WriteAllText(goalsHandler.fileName, jsonString);
-                        // goalsHandler.SaveToJson();
+                        // GoalsHandler goalsHandler = new GoalsHandler();
+                        SimpleGoal simpleGoal = new SimpleGoal();
+                        simpleGoal.CreateGoal();
+                        goalsHandler.goals.Add(simpleGoal);
+                        // string jsonString = JsonSerializer.Serialize(goalsHandler);
+                        // File.WriteAllText(goalsHandler.fileName, jsonString);
+                        // Console.WriteLine(goalsHandler.goals[0]);
+                        beepBop = false;
+                        titleCaseInput = "null";
+                        Console.Clear();
+                        Console.WriteLine($"{simpleGoal._name} has successfully been created!");
                     }
                     else if (chosenGoal == "2" || chosenGoal.ToLower() == "checklist goal")
                     {
@@ -71,6 +76,14 @@ class Program
                     }
                     else {Console.Clear();Console.WriteLine($"Invalid input '{chosenGoal}'");}
                 }
+            }
+            else if (titleCaseInput == "3" || titleCaseInput == "Quit")
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine($"Invalid input '{titleCaseInput}'");
             }
         }
     }
