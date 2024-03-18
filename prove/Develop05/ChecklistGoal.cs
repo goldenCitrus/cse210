@@ -1,10 +1,10 @@
 public class ChecklistGoal : Goal
 {
 
-    int _maxValue;
-    int _currentValue;
+    public int _maxValue;
+    public int _currentValue;
 
-    public override void CreateGoal()
+    public override void CreateGoal(GoalsHandler goalHandler)
     {
         throw new NotImplementedException();
     }

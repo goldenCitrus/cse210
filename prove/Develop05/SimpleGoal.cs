@@ -1,8 +1,17 @@
 public class SimpleGoal : Goal
 {
-    public override void CreateGoal()
+
+    public SimpleGoal(string name)
     {
-        throw new NotImplementedException();
+        _name = name;
+    }
+
+    public override void CreateGoal(GoalsHandler goalHandler)
+    {
+        Console.Write("What would you like to call this goal: ");
+        _name = Console.ReadLine();
+        _isComplete = false;
+        goalHandler.Goals.Add(this);
     }
 
     public override void UpdateGoal()
@@ -10,5 +19,4 @@ public class SimpleGoal : Goal
         throw new NotImplementedException();
     }
 
-    
 }

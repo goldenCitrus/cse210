@@ -1,7 +1,9 @@
 public class EternalGoal : Goal
 {
 
-    public override void CreateGoal()
+    public int _timesCompletd;
+
+    public override void CreateGoal(GoalsHandler goalHandler)
     {
         throw new NotImplementedException();
     }
