@@ -31,7 +31,7 @@ public class GoalsHandler
         }
     }
     
-    public string fileName = "goals.json";
+    // public string fileName = "goals.json";
 
     // public void PrintGoals(List<Goal> goalss)
     // {

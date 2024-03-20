@@ -1,6 +1,8 @@
 using System;
 using System.Globalization;
 using System.Text.Json;
+using System.Collections.Generic;
+using System.IO;
 
 class Program
 {
@@ -9,6 +11,8 @@ class Program
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         GoalsHandler goalsHandler = new GoalsHandler();
         // goalsHandler.PrintRoster();
+
+        string fileName = "goals.json";
 
         List<string> menuOptions = new List<string>() {"View Or Edit Goals", "Create New Goal", "Quit", "1", "2", "3"};
         string userInput = "null";
@@ -28,7 +32,7 @@ class Program
             if (titleCaseInput == "1" || titleCaseInput == "View Or Edit Goals")
             {
                 // GoalsHandler goalsHandler = new GoalsHandler();
-                if (File.Exists(goalsHandler.fileName))
+                if (File.Exists(fileName))
                 {
                     goalsHandler.printGoals();
                     Console.ReadKey();
@@ -55,11 +59,9 @@ class Program
                     if (chosenGoal == "1" || chosenGoal.ToLower() == "simple goal")
                     {
                         // GoalsHandler goalsHandler = new GoalsHandler();
-                        SimpleGoal simpleGoal = new SimpleGoal();
-                        simpleGoal.CreateGoal();
+                        SimpleGoal simpleGoal = new SimpleGoal("test");
+                        // simpleGoal.CreateGoal();
                         goalsHandler.goals.Add(simpleGoal);
-                        // string jsonString = JsonSerializer.Serialize(goalsHandler);
-                        // File.WriteAllText(goalsHandler.fileName, jsonString);
                         // Console.WriteLine(goalsHandler.goals[0]);
                         beepBop = false;
                         titleCaseInput = "null";
@@ -80,6 +82,12 @@ class Program
             else if (titleCaseInput == "3" || titleCaseInput == "Quit")
             {
                 break;
+            }
+            else if (titleCaseInput == "4")
+            {
+                string jsonString = JsonSerializer.Serialize(goalsHandler);
+                Console.WriteLine(jsonString);
+                File.WriteAllText(fileName, jsonString);
             }
             else
             {

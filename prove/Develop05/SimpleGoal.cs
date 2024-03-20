@@ -1,10 +1,11 @@
 public class SimpleGoal : Goal
 {
 
-    // public SimpleGoal(string name)
-    // {
-    //     _name = name;
-    // }
+    public SimpleGoal(string name)
+    {
+        _name = name;
+        _isComplete = false;
+    }
 
     public override void CreateGoal()
     {
