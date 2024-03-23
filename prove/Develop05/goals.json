@@ -1,1 +1,1 @@
-{}
+{"goals":[],"simpleGoals":[{"_isComplete":true,"_name":"dhsg","_goalType":"Simple","_maxValue":0,"_currentValue":0,"_timesCompletd":0}],"checklistGoals":[{"_isComplete":false,"_name":"checklist","_goalType":"Checklist","_maxValue":3,"_currentValue":2,"_timesCompletd":0}],"eternalGoals":[{"_isComplete":false,"_name":"eternal","_goalType":"Eternal","_maxValue":0,"_currentValue":0,"_timesCompletd":2}],"points":350}
