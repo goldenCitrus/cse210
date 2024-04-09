@@ -4,9 +4,6 @@ using Microsoft.VisualBasic;
 public class MyCalendar
 {
 
-    // public string month;
-    // public List<Date>
-
     //newEvent[0] = {month}-{day}-{year}, newEvent[1] = Name, newEvent[2] = Start Time, newEvent[3] = Event Duration
 
 
