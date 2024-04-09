@@ -62,21 +62,21 @@ public class Date
 
     public string MonthIntToString(int monthInt)
     {
-        List<string> monthStrings = new List<string>(){"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"};
         return $"{monthStrings[monthInt-1]}";
     }
+    private List<string> monthStrings = new List<string>(){"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"};
+
 
     public void ResetDate(int Month, int Year)
     {
         month = Month;
         year = Year;
+        validDays = months[month];
     }
 
-    public string day {get; set;}
     public int month {get; set;}
     public int validDays {get; set;}
     public int year {get; set;}
-    public string time {get; set;}
 
 
 }
