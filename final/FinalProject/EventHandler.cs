@@ -9,10 +9,12 @@ using System.Text.RegularExpressions;
 public class EventHandler
 {
 
+    //newEvent[0] = Date, newEvent[1] = Name, newEvent[2] = Start Time, newEvent[3] = Event Duration
+
     public void CreateEvent(string month, int year, Date date)
     {
         List<string> newEvent = new List<string>(); 
-        //newEvent[0] = Date, newEvent[1] = Name, newEvent[2] = Start Time, newEvent[3] = Event Duration
+        //newEvent[0] = {month}-{day}-{year}, newEvent[1] = Name, newEvent[2] = Start Time, newEvent[3] = Event Duration
         int chosenDate;
         bool gimble;
         do 
@@ -22,7 +24,7 @@ public class EventHandler
             gimble = int.TryParse(temp, out chosenDate);
             if (gimble && chosenDate > 0 && chosenDate <= date.validDays)
             {
-                newEvent.Add(temp);
+                newEvent.Add($"{date.month}-{temp}-{date.year}");
             }
             else
             {
@@ -179,6 +181,26 @@ public class EventHandler
             }
             timeFormat = true;
         }
+    }
+
+    public void ViewEvent(Date date, int month, int year, int day)
+    {
+        Console.Clear();
+        foreach (List<string> events in date.date)
+        {
+            bool hasPrinted = false;
+            if (events[0] == $"{month}-{day}-{year}" && !hasPrinted)
+            {
+                hasPrinted = true;
+                Console.WriteLine($"On {date.month} {day} {year}, You have {events[1]}, Which starts at {events[2]}, and lasts for {events[3]} hour(s)"); 
+            }
+        }
+    }
+
+    public void SaveCalendar(Date date)
+    {
+        string jsonString = JsonSerializer.Serialize(date);
+        File.WriteAllText("events.json", jsonString);
     }
 
 }
